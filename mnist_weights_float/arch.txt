@@ -1,0 +1,28 @@
+depthwise1.weight sz_i 1 sz_o 1 mat: 3 x 3
+depthwise1.bias sz_o None
+pointwise1.weight sz_i 1 sz_o 32 mat: 1 x 1
+pointwise1.bias sz_o 32
+relu
+maxpool sz_o: 2 x 2
+depthwise2.weight sz_i 1 sz_o 32 mat: 3 x 3
+depthwise2.bias sz_o None
+pointwise2.weight sz_i 32 sz_o 64 mat: 1 x 1
+pointwise2.bias sz_o 64
+relu
+maxpool sz_o: 2 x 2
+depthwise3.weight sz_i 1 sz_o 64 mat: 3 x 3
+depthwise3.bias sz_o None
+pointwise3.weight sz_i 64 sz_o 128 mat: 1 x 1
+pointwise3.bias sz_o 128
+relu
+maxpool sz_o: 2 x 2
+depthwise4.weight sz_i 1 sz_o 128 mat: 3 x 3
+depthwise4.bias sz_o None
+pointwise4.weight sz_i 128 sz_o 256 mat: 1 x 1
+pointwise4.bias sz_o 256
+relu
+maxpool sz_o: 2 x 2
+fc1._packed_params.weight sz_i 256 sz_o 100
+fc1._packed_params.bias sz_o 100
+fc2._packed_params.weight sz_i 100 sz_o 10
+fc2._packed_params.bias sz_o 10
